@@ -1,0 +1,26 @@
+{
+  "name": "ts-plugin-enumerate",
+  "version": "0.1.0",
+  "description": "TypeScript plugin which enumerates members of the union of string literal types",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimamula/ts-plugin-enumerate.git"
+  },
+  "keywords": [
+    "TypeScript"
+  ],
+  "author": "kimamula",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kimamula/ts-plugin-enumerate/issues"
+  },
+  "homepage": "https://github.com/kimamula/ts-plugin-enumerate#readme",
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "typescript": "^2.3.0-dev.20170417"
+  }
+}

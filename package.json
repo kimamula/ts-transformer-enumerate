@@ -4,8 +4,7 @@
   "description": "TypeScript plugin which enumerates members of the union of string literal types",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "test": "npm run build && node ./test/compileMain.js && mocha ./test/main.js"
+    "test": "tsc && node ./test/compileMain.js && mocha ./test/main.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,11 @@
   "bugs": {
     "url": "https://github.com/kimamula/ts-plugin-enumerate/issues"
   },
+  "files": [
+    "index.js",
+    "index.ts",
+    "lib/**/*.js"
+  ],
   "homepage": "https://github.com/kimamula/ts-plugin-enumerate#readme",
   "devDependencies": {
     "@types/lodash.isequal": "^4.5.1",

@@ -6,3 +6,7 @@ console.log({ foo: "foo" }.foo);
 ({ foo: "foo", bar: "bar" }.bar);
 var enumeratedFooBarBaz = { foo: "foo", bar: "bar", baz: "baz" };
 enumeratedFooBarBaz.ping = 'pong';
+function enumerate() {
+    return '';
+}
+var a = enumerate();

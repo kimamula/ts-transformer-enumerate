@@ -11,3 +11,8 @@ type FooBar = Foo | 'bar';
 type FooBarBaz = FooBar | 'foo' | 'baz' | string;
 const enumeratedFooBarBaz = e<FooBarBaz>();
 enumeratedFooBarBaz.ping = 'pong';
+
+function enumerate() {
+  return '';
+}
+const a = enumerate();

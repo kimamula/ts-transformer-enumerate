@@ -4,4 +4,5 @@ var index_1 = require("../../index");
 ({});
 console.log({ foo: "foo" }.foo);
 ({ foo: "foo", bar: "bar" }.bar);
-({ foo: "foo", bar: "bar", foo: "foo", baz: "baz" }.ping = 'pong');
+var enumeratedFooBarBaz = { foo: "foo", bar: "bar", baz: "baz" };
+enumeratedFooBarBaz.ping = 'pong';

@@ -47,7 +47,8 @@ function resolveStringLiteralTypes(node: ts.Node, typeChecker: ts.TypeChecker, s
       node.forEachChild(node => resolveStringLiteralTypes(node, typeChecker, stringLiteralTypes));
       break;
     case ts.SyntaxKind.LiteralType:
-      stringLiteralTypes.push((node as ts.LiteralTypeNode).getText());
+      const text = (node as ts.LiteralTypeNode).getText();
+      stringLiteralTypes.indexOf(text) < 0 && stringLiteralTypes.push(text);
       break;
     default:
       break;

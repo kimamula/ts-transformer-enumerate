@@ -9,7 +9,9 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "./lib/**/*.ts"
+    "index.ts",
+    "lib",
+    "test/compile.ts"
   ],
   "exclude": [
     "node_modules"

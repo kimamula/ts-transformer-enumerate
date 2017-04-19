@@ -9,5 +9,5 @@ enumerate<'foo' | 'bar'>().bar;
 
 type FooBar = Foo | 'bar';
 type FooBarBaz = FooBar | 'foo' | 'baz' | string;
-const enumeratedFooBarBaz = enumerate<FooBarBaz>();
-enumeratedFooBarBaz.ping = 'pong';
+const FooBarBaz = enumerate<FooBarBaz>();
+FooBarBaz.ping = 'pong';

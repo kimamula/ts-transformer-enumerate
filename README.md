@@ -22,7 +22,7 @@ console.log(Colors.yellow); // 'yellow'
 console.log(Colors.red); // 'red'
 ```
 
-## How to use this package when you compile TypeScript codes
+## How to use this package to compile TypeScript codes
 
 Unfortunately, the only way currently available to use the plugin is to use it with TypeScript compiler API (See https://github.com/Microsoft/TypeScript/issues/14419 for detail).
 Something like the following works.

@@ -3,7 +3,8 @@ import { enumerate as e } from '../../index';
 e();
 
 type Foo = 'foo';
-console.log(e<Foo>().foo);
+const Foo = e<Foo>();
+console.log(Foo.foo);
 
 e<'foo' | 'bar'>().bar;
 
@@ -16,3 +17,5 @@ function enumerate() {
   return '';
 }
 const a = enumerate();
+
+e.toString();

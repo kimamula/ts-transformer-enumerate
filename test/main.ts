@@ -21,6 +21,6 @@ describe('enumerate', () => {
         const fullFileName = path.join(fileTransformationDir, file), postCompileFullFileName = fullFileName.replace(/\.ts$/, '.js');
         compile([fullFileName], (fileName, data) => postCompileFullFileName === fileName && (result = data));
         assert.strictEqual(result, fs.readFileSync(postCompileFullFileName, 'utf-8'));
-    })
+    }).timeout(5000)
   );
 });

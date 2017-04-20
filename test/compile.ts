@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import { transformerFactory } from '../lib/transformer';
+import transformer from '../lib/transformer';
 
 export function compile(filePaths: string[], writeFileCallback?: ts.WriteFileCallback): void {
   const program = ts.createProgram(filePaths, {
@@ -8,7 +8,7 @@ export function compile(filePaths: string[], writeFileCallback?: ts.WriteFileCal
     target: ts.ScriptTarget.ES5
   });
   const transformers: ts.CustomTransformers = {
-    before: [transformerFactory(program)],
+    before: [transformer(program)],
     after: []
   };
   const { emitSkipped, diagnostics } = program.emit(undefined, writeFileCallback, undefined, false, transformers);

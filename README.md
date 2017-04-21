@@ -1,4 +1,9 @@
 # ts-transformer-enumerate
+
+[![Build Status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url]
+[![Downloads](https://img.shields.io/npm/dm/ts-transformer-enumerate.svg)](https://www.npmjs.com/package/ts-transformer-enumerate)
+
 A TypeScript custom transformer which enables enumerating members of the union of string literal types.
 
 # Requirement

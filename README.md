@@ -29,7 +29,7 @@ Something like the following works.
 
 ```js
 const ts = require('typescript');
-const enumerateTransformer = require('ts-transformer-enumerate/lib/transformer').default;
+const enumerateTransformer = require('ts-transformer-enumerate/transformer').default;
 
 const program = ts.createProgram([/* your files to compile */], {
   strict: true,

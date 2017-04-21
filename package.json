@@ -1,14 +1,14 @@
 {
-  "name": "ts-plugin-enumerate",
+  "name": "ts-transformer-enumerate",
   "version": "0.1.0",
-  "description": "TypeScript plugin which enumerates members of the union of string literal types",
+  "description": "TypeScript custom transformer which enumerates members of the union of string literal types",
   "main": "index.js",
   "scripts": {
     "test": "tsc && node ./test/compileMain.js && mocha ./test/main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kimamula/ts-plugin-enumerate.git"
+    "url": "git+https://github.com/kimamula/ts-transformer-enumerate.git"
   },
   "keywords": [
     "TypeScript"
@@ -16,14 +16,14 @@
   "author": "kimamula",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kimamula/ts-plugin-enumerate/issues"
+    "url": "https://github.com/kimamula/ts-transformer-enumerate/issues"
   },
   "files": [
     "index.js",
     "index.ts",
-    "lib/**/*.js"
+    "transformer.js"
   ],
-  "homepage": "https://github.com/kimamula/ts-plugin-enumerate#readme",
+  "homepage": "https://github.com/kimamula/ts-transformer-enumerate#readme",
   "devDependencies": {
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.12",

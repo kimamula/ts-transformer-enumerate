@@ -10,7 +10,7 @@
   },
   "include": [
     "index.ts",
-    "lib",
+    "transformer.ts",
     "test/compile.ts"
   ],
   "exclude": [

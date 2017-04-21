@@ -32,7 +32,7 @@ function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): 
   }
   const { declaration } = typeChecker.getResolvedSignature(node as ts.CallExpression);
   return !!declaration
-    && (declaration.getSourceFile().fileName === path.resolve(__dirname, '..', 'index.ts'))
+    && (declaration.getSourceFile().fileName === path.resolve(__dirname, 'index.ts'))
     && !!declaration.name
     && (declaration.name.getText() === 'enumerate');
 }

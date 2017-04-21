@@ -74,3 +74,8 @@ console.log(Colors.red); // 'red'
 # License
 
 MIT
+
+[travis-image]:https://travis-ci.org/kimamula/ts-transformer-enumerate.svg?branch=master
+[travis-url]:https://travis-ci.org/kimamula/ts-transformer-enumerate
+[npm-image]:https://img.shields.io/npm/v/ts-transformer-enumerate.svg?style=flat
+[npm-url]:https://npmjs.org/package/ts-transformer-enumerate

@@ -22,7 +22,7 @@ console.log(Colors.yellow); // 'yellow'
 console.log(Colors.red); // 'red'
 ```
 
-## How to use a custom transformer
+## How to use the custom transformer
 
 Unfortunately, the only way currently available to use custom transformers is to use them with TypeScript compiler API (See https://github.com/Microsoft/TypeScript/issues/14419 for detail).
 Something like the following works.

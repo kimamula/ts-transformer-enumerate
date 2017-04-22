@@ -21,7 +21,8 @@
   "files": [
     "index.js",
     "index.ts",
-    "transformer.js"
+    "transformer.js",
+    "transformer.ts"
   ],
   "homepage": "https://github.com/kimamula/ts-transformer-enumerate#readme",
   "devDependencies": {

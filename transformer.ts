@@ -26,13 +26,14 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
   }));
 }
 
+const indexTs = path.join(__dirname, 'index.ts');
 function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): node is ts.CallExpression {
   if (node.kind !== ts.SyntaxKind.CallExpression) {
     return false;
   }
   const { declaration } = typeChecker.getResolvedSignature(node as ts.CallExpression);
   return !!declaration
-    && (declaration.getSourceFile().fileName === path.resolve(__dirname, 'index.ts'))
+    && (declaration.getSourceFile().fileName === indexTs)
     && !!declaration.name
     && (declaration.name.getText() === 'enumerate');
 }

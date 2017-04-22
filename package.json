@@ -1,6 +1,6 @@
 {
   "name": "ts-transformer-enumerate",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "TypeScript custom transformer which enumerates members of the union of string literal types",
   "main": "index.js",
   "scripts": {

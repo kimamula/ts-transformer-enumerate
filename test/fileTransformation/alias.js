@@ -12,3 +12,11 @@ function enumerate() {
 }
 var a = enumerate();
 index_1.enumerate.toString();
+var MyClass = (function () {
+    function MyClass() {
+    }
+    MyClass.prototype.enumerate = function () {
+        return {};
+    };
+    return MyClass;
+}());

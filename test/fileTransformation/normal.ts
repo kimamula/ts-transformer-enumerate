@@ -14,3 +14,9 @@ const FooBarBaz = enumerate<FooBarBaz>();
 FooBarBaz.ping = 'pong';
 
 enumerate.toString();
+
+class MyClass<T extends string> {
+  enumerate() {
+    return enumerate<T>();
+  }
+}

@@ -8,3 +8,11 @@ console.log(Foo.foo);
 var FooBarBaz = { foo: "foo", bar: "bar", baz: "baz" };
 FooBarBaz.ping = 'pong';
 index_1.enumerate.toString();
+var MyClass = (function () {
+    function MyClass() {
+    }
+    MyClass.prototype.enumerate = function () {
+        return {};
+    };
+    return MyClass;
+}());

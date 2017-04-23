@@ -19,3 +19,9 @@ function enumerate() {
 const a = enumerate();
 
 e.toString();
+
+class MyClass<T extends string> {
+  enumerate() {
+    return e<T>();
+  }
+}

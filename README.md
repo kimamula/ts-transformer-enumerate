@@ -7,7 +7,7 @@
 A TypeScript custom transformer which enables enumerating members of the union of string literal types.
 
 # Requirement
-TypeScript >= 2.3.1
+TypeScript >= 2.4.0-dev
 
 # How to use this package
 

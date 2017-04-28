@@ -7,7 +7,7 @@
 A TypeScript custom transformer which enables enumerating members of the union of string literal types.
 
 # Requirement
-TypeScript >= 2.3.0
+TypeScript >= 2.3.1
 
 # How to use this package
 
@@ -67,8 +67,6 @@ console.log(Colors.red); // 'red'
 
 # Note
 
-* TypeScript 2.3.0-dev currently has a bug in transformation API, which prevents this package to work correctly in some cases.
-  * https://github.com/Microsoft/TypeScript/issues/15192
 * The `enumerate` function can only be used as a call expression. Writing something like `enumerate.toString()` results in a runtime error.
 * `enumerate` does not work with a dynamic type parameter, i.e., `enumerate<T>()` in the following code is converted to an empty object(`{}`).
 

@@ -31,7 +31,11 @@ function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): 
   if (node.kind !== ts.SyntaxKind.CallExpression) {
     return false;
   }
-  const { declaration } = typeChecker.getResolvedSignature(node as ts.CallExpression);
+  const signature = typeChecker.getResolvedSignature(node as ts.CallExpression);
+  if (typeof signature === 'undefined') {
+    return false;
+  }
+  const { declaration } = signature;
   return !!declaration
     && (declaration.getSourceFile().fileName === indexTs)
     && !!declaration.name
@@ -42,7 +46,7 @@ function resolveStringLiteralTypes(node: ts.Node, typeChecker: ts.TypeChecker, s
   switch (node.kind) {
     case ts.SyntaxKind.TypeReference:
       const symbol = typeChecker.getSymbolAtLocation((node as ts.TypeReferenceNode).typeName);
-      symbol.declarations && symbol.declarations[0].forEachChild(node => resolveStringLiteralTypes(node, typeChecker, stringLiteralTypes));
+      symbol && symbol.declarations && symbol.declarations[0].forEachChild(node => resolveStringLiteralTypes(node, typeChecker, stringLiteralTypes));
       break;
     case ts.SyntaxKind.UnionType:
       node.forEachChild(node => resolveStringLiteralTypes(node, typeChecker, stringLiteralTypes));

@@ -32,6 +32,6 @@
     "typescript": "^2.4.1"
   },
   "peerDependencies": {
-    "typescript": "^2.4.1"
+    "typescript": ">=2.4.1"
   }
 }

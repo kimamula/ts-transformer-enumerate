@@ -21,8 +21,8 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
 
   return ts.createObjectLiteral(stringLiteralTypes.map(stringLiteralType => {
     // unquote string literal type
-    const propertyName = stringLiteralType.substring(1, stringLiteralType.length - 1);
-    return ts.createPropertyAssignment(propertyName, ts.createLiteral(propertyName));
+    const propertyValue = stringLiteralType.substring(1, stringLiteralType.length - 1);
+    return ts.createPropertyAssignment(stringLiteralType, ts.createLiteral(propertyValue));
   }));
 }
 

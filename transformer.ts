@@ -37,7 +37,7 @@ function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): 
   }
   const { declaration } = signature;
   return !!declaration
-    && (declaration.getSourceFile().fileName === indexTs)
+    && (path.join(declaration.getSourceFile().fileName) === indexTs)
     && !!(declaration as any)['name']
     && ((declaration as any)['name'].getText() === 'enumerate');
 }

@@ -8,11 +8,11 @@ describe('enumerate', () => {
   it('enumerates members of the union of string literal types', () => {
     assert.deepStrictEqual(enumerate(), {});
     type Foo = 'foo';
-    assert.deepStrictEqual(enumerate<Foo>(), { foo: 'foo' });
+    assert.deepStrictEqual(enumerate<Foo>(), { 'foo': 'foo' });
     type FooBar = 'foo' | 'bar';
-    assert.deepStrictEqual(enumerate<FooBar>(), { foo: 'foo', bar: 'bar' });
+    assert.deepStrictEqual(enumerate<FooBar>(), { 'foo': 'foo', 'bar': 'bar' });
     type FooBarBaz = 'foo' | 'bar' | 'baz';
-    assert.deepStrictEqual(enumerate<FooBarBaz>(), { foo: 'foo', bar: 'bar', baz: 'baz' });
+    assert.deepStrictEqual(enumerate<FooBarBaz>(), { 'foo': 'foo', 'bar': 'bar', 'baz': 'baz' });
   });
   it('generate valid compilable code', () => {
     type FooBarBaz = '/foo/foo' | 'bar-bar' | 'baz.baz';

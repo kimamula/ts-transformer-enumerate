@@ -19,11 +19,7 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
   const stringLiteralTypes: string[] = [];
   node.typeArguments && resolveStringLiteralTypes(node.typeArguments[0], typeChecker, stringLiteralTypes);
 
-  return ts.createObjectLiteral(stringLiteralTypes.map(stringLiteralType => {
-    // unquote string literal type
-    const propertyValue = stringLiteralType.substring(1, stringLiteralType.length - 1);
-    return ts.createPropertyAssignment(stringLiteralType, ts.createLiteral(propertyValue));
-  }));
+  return ts.createObjectLiteral(stringLiteralTypes.map(stringLiteralType => ts.createPropertyAssignment(stringLiteralType, stringLiteralType)));
 }
 
 const indexTs = path.join(__dirname, 'index.ts');

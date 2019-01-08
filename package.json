@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.12",
-    "mocha": "^3.2.0",
+    "mocha": "^5.2.0",
     "typescript": "^2.4.1"
   },
   "peerDependencies": {

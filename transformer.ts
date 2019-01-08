@@ -16,14 +16,12 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
   if (!isEnumerateCallExpression(node, typeChecker)) {
     return node;
   }
-  const stringLiteralTypes: string[] = [];
-  node.typeArguments && resolveStringLiteralTypes(node.typeArguments[0], typeChecker, stringLiteralTypes);
+  const literals: ts.LiteralTypeNode['literal'][] = [];
+  node.typeArguments && resolveStringLiteralTypes(node.typeArguments[0], typeChecker, literals);
 
-  return ts.createObjectLiteral(stringLiteralTypes.map(stringLiteralType => {
-    // unquote string literal type
-    const propertyName = stringLiteralType.substring(1, stringLiteralType.length - 1);
-    return ts.createPropertyAssignment(propertyName, ts.createLiteral(propertyName));
-  }));
+  return ts.createObjectLiteral(literals.map(literal =>
+    ts.createPropertyAssignment(literal.getText(), literal)
+  ));
 }
 
 const indexTs = path.join(__dirname, 'index.ts');
@@ -42,18 +40,19 @@ function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): 
     && ((declaration as any)['name'].getText() === 'enumerate');
 }
 
-function resolveStringLiteralTypes(node: ts.Node, typeChecker: ts.TypeChecker, stringLiteralTypes: string[]): void {
+function resolveStringLiteralTypes(node: ts.Node, typeChecker: ts.TypeChecker, literals: ts.LiteralTypeNode['literal'][]): void {
   switch (node.kind) {
     case ts.SyntaxKind.TypeReference:
       const symbol = typeChecker.getSymbolAtLocation((node as ts.TypeReferenceNode).typeName);
-      symbol && symbol.declarations && symbol.declarations[0].forEachChild(node => resolveStringLiteralTypes(node, typeChecker, stringLiteralTypes));
+      symbol && symbol.declarations && symbol.declarations[0].forEachChild(node => resolveStringLiteralTypes(node, typeChecker, literals));
       break;
     case ts.SyntaxKind.UnionType:
-      node.forEachChild(node => resolveStringLiteralTypes(node, typeChecker, stringLiteralTypes));
+      node.forEachChild(node => resolveStringLiteralTypes(node, typeChecker, literals));
       break;
     case ts.SyntaxKind.LiteralType:
-      const text = (node as ts.LiteralTypeNode).getText();
-      stringLiteralTypes.indexOf(text) < 0 && stringLiteralTypes.push(text);
+      const literal = (node as ts.LiteralTypeNode).literal;
+      // collect literal instead of string
+      !literals.some(_literal => _literal.getText() === literal.getText()) && literals.push(literal);
       break;
     default:
       break;

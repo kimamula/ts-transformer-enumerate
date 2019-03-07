@@ -26,10 +26,10 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
 
 const indexTs = path.join(__dirname, 'index.ts');
 function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): node is ts.CallExpression {
-  if (node.kind !== ts.SyntaxKind.CallExpression) {
+  if (!ts.isCallExpression(node)) {
     return false;
   }
-  const signature = typeChecker.getResolvedSignature(node as ts.CallExpression);
+  const signature = typeChecker.getResolvedSignature(node);
   if (typeof signature === 'undefined') {
     return false;
   }

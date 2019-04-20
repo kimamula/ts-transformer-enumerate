@@ -35,9 +35,10 @@ function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): 
   }
   const { declaration } = signature;
   return !!declaration
+    && !ts.isJSDocSignature(declaration)
     && (path.join(declaration.getSourceFile().fileName) === indexTs)
-    && !!(declaration as any)['name']
-    && ((declaration as any)['name'].getText() === 'enumerate');
+    && !!(declaration.name)
+    && ((declaration.name).getText() === 'enumerate');
 }
 
 function resolveStringLiteralTypes(node: ts.Node, typeChecker: ts.TypeChecker, literals: ts.LiteralTypeNode['literal'][]): void {

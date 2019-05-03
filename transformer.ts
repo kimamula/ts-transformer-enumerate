@@ -16,11 +16,11 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
   if (!isEnumerateCallExpression(node, typeChecker)) {
     return node;
   }
-  const literals: ts.LiteralTypeNode['literal'][] = [];
-  node.typeArguments && resolveStringLiteralTypes(node.typeArguments[0], typeChecker, literals);
+  const literals: string[] = [];
+  node.typeArguments && resolveStringLiteralTypes(typeChecker.getTypeFromTypeNode(node.typeArguments[0]), literals);
 
   return ts.createObjectLiteral(literals.map(literal =>
-    ts.createPropertyAssignment(literal.getText(), literal)
+    ts.createPropertyAssignment(JSON.stringify(literal), ts.createStringLiteral(literal))
   ));
 }
 
@@ -45,21 +45,10 @@ function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): 
     && declaration.name.getText() === 'enumerate';
 }
 
-function resolveStringLiteralTypes(node: ts.Node, typeChecker: ts.TypeChecker, literals: ts.LiteralTypeNode['literal'][]): void {
-  switch (node.kind) {
-    case ts.SyntaxKind.TypeReference:
-      const symbol = typeChecker.getSymbolAtLocation((node as ts.TypeReferenceNode).typeName);
-      symbol && symbol.declarations && symbol.declarations[0].forEachChild(node => resolveStringLiteralTypes(node, typeChecker, literals));
-      break;
-    case ts.SyntaxKind.UnionType:
-      node.forEachChild(node => resolveStringLiteralTypes(node, typeChecker, literals));
-      break;
-    case ts.SyntaxKind.LiteralType:
-      const literal = (node as ts.LiteralTypeNode).literal;
-      // collect literal instead of string
-      !literals.some(_literal => _literal.getText() === literal.getText()) && literals.push(literal);
-      break;
-    default:
-      break;
+function resolveStringLiteralTypes(type: ts.Type, literals: string[]) {
+  if (type.isUnion()) {
+    type.types.forEach(type => resolveStringLiteralTypes(type, literals));
+  } else if (type.isStringLiteral()) {
+    literals.push(type.value);
   }
 }

@@ -4,7 +4,7 @@
   "description": "TypeScript custom transformer which enumerates members of the union of string literal types",
   "main": "index.js",
   "scripts": {
-    "test": "tsc && node ./test/compileMain.js && mocha ./test/main.js"
+    "test": "tsc && node test/compile && mocha test"
   },
   "repository": {
     "type": "git",

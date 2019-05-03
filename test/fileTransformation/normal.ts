@@ -9,9 +9,8 @@ console.log(Foo.foo);
 enumerate<'foo' | 'bar'>().bar;
 
 type FooBar = Foo | 'bar';
-type FooBarBaz = FooBar | 'foo' | 'baz' | string;
-const FooBarBaz = enumerate<FooBarBaz>();
-FooBarBaz.ping = 'pong';
+type FooBarBaz = FooBar | 'foo' | 'baz';
+enumerate<FooBarBaz>();
 
 enumerate.toString();
 

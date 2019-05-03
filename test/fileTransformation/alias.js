@@ -2,11 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("../../index");
 ({});
-var Foo = { 'foo': 'foo' };
+var Foo = { "foo": "foo" };
 console.log(Foo.foo);
-({ 'foo': 'foo', 'bar': 'bar' }.bar);
-var FooBarBaz = { 'foo': 'foo', 'bar': 'bar', 'baz': 'baz' };
-FooBarBaz.ping = 'pong';
+({ "foo": "foo", "bar": "bar" }.bar);
+({ "foo": "foo", "bar": "bar", "baz": "baz" });
 function enumerate() {
     return '';
 }

@@ -9,9 +9,8 @@ console.log(Foo.foo);
 e<'foo' | 'bar'>().bar;
 
 type FooBar = Foo | 'bar';
-type FooBarBaz = FooBar | 'foo' | 'baz' | string;
-const FooBarBaz = e<FooBarBaz>();
-FooBarBaz.ping = 'pong';
+type FooBarBaz = FooBar | 'foo' | 'baz';
+e<FooBarBaz>();
 
 function enumerate() {
   return '';

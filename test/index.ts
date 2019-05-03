@@ -2,7 +2,8 @@ import { enumerate } from '../index';
 import * as assert from 'assert';
 import * as path from 'path';
 import * as fs from 'fs';
-import { compile } from './compile';
+import { compile } from './compile/compile';
+import { NS, Colors } from './external';
 
 describe('enumerate', () => {
   it('enumerates members of the union of string literal types', () => {
@@ -19,6 +20,10 @@ describe('enumerate', () => {
     assert.deepStrictEqual(enumerate<FooBarBaz>(), { '/foo/foo': '/foo/foo', 'bar-bar': 'bar-bar', 'baz.baz': 'baz.baz' });
     type LotsOfCharacters = '1234567890!@#$%^&*()_+-={}[]|\\:;<>?,./~`"';
     assert.deepStrictEqual(enumerate<LotsOfCharacters>(), { '1234567890!@#$%^&*()_+-={}[]|\\:;<>?,./~`"': '1234567890!@#$%^&*()_+-={}[]|\\:;<>?,./~`"' });
+  });
+  it('enumerates members of types imported from external files', () => {
+    assert.deepStrictEqual(enumerate<Colors>(), { 'red': 'red', 'green': 'green', 'blue': 'blue' });
+    assert.deepStrictEqual(enumerate<NS.Colors>(), { 'red': 'red', 'green': 'green', 'blue': 'blue' });
   });
   const fileTransformationDir = path.join(__dirname, 'fileTransformation');
   fs.readdirSync(fileTransformationDir).filter((file) => path.extname(file) === '.ts').forEach((file) =>

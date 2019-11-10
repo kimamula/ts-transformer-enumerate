@@ -24,7 +24,7 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node {
   ));
 }
 
-const indexTs = path.join(__dirname, 'index.ts');
+const indexTs = path.join(__dirname, 'index.d.ts');
 
 function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): node is ts.CallExpression {
   if (!ts.isCallExpression(node)) {

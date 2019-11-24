@@ -25,10 +25,10 @@
   ],
   "homepage": "https://github.com/kimamula/ts-transformer-enumerate#readme",
   "devDependencies": {
-    "@types/mocha": "^2.2.41",
-    "@types/node": "^7.0.12",
-    "mocha": "^5.2.0",
-    "typescript": "^2.4.1"
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.12",
+    "mocha": "^6.2.2",
+    "typescript": "^3.7.2"
   },
   "peerDependencies": {
     "typescript": ">=2.4.1"

@@ -1,8 +1,8 @@
 import { enumerate } from '../index';
-import * as assert from 'assert';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as ts from 'typescript';
+import assert from 'assert';
+import path from 'path';
+import fs from 'fs';
+import ts from 'typescript';
 import { compile } from './compile/compile';
 import { NS, Colors } from './external';
 

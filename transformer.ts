@@ -1,5 +1,5 @@
-import * as ts from 'typescript';
-import * as path from 'path';
+import ts from 'typescript';
+import path from 'path';
 
 export default function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> {
   return (context: ts.TransformationContext) => (file: ts.SourceFile) => visitNodeAndChildren(file, program, context);
@@ -56,14 +56,19 @@ function isEnumerateCallExpression(node: ts.Node, typeChecker: ts.TypeChecker): 
   if (typeof signature === 'undefined') {
     return false;
   }
-
-  const { declaration } = signature;
-
-  return !!declaration
-    && !ts.isJSDocSignature(declaration)
-    && path.join(declaration.getSourceFile().fileName) === indexTs
-    && !!declaration.name
-    && declaration.name.getText() === 'enumerate';
+  const declaration = typeChecker.getResolvedSignature(node)?.declaration;
+  if (!declaration || ts.isJSDocSignature(declaration) || declaration.name?.getText() !== 'enumerate') {
+    return false;
+  }
+  try {
+    // require.resolve is required to resolve symlink.
+    // https://github.com/kimamula/ts-transformer-keys/issues/4#issuecomment-643734716
+    return require.resolve(declaration.getSourceFile().fileName) === indexTs;
+  } catch {
+    // declaration.getSourceFile().fileName may not be in Node.js require stack and require.resolve may result in an error.
+    // https://github.com/kimamula/ts-transformer-keys/issues/47
+    return false;
+  }
 }
 
 function resolveStringLiteralTypes(type: ts.Type, literals: string[]) {

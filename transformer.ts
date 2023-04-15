@@ -1,6 +1,10 @@
 import ts from 'typescript';
 import path from 'path';
 
+const createObjectLiteral = ts.factory ? ts.factory.createObjectLiteralExpression : (ts as any).createObjectLiteral;
+const createPropertyAssignment = ts.factory ? ts.factory.createPropertyAssignment : (ts as any).createPropertyAssignment;
+const createStringLiteral = ts.factory ? ts.factory.createStringLiteral : (ts as any).createStringLiteral;
+
 export default function transformer(program: ts.Program): ts.TransformerFactory<ts.SourceFile> {
   return (context: ts.TransformationContext) => (file: ts.SourceFile) => visitNodeAndChildren(file, program, context);
 }
@@ -24,8 +28,8 @@ function visitNode(node: ts.Node, program: ts.Program): ts.Node | undefined {
   const literals: string[] = [];
   node.typeArguments && resolveStringLiteralTypes(typeChecker.getTypeFromTypeNode(node.typeArguments[0]), literals);
 
-  return ts.createObjectLiteral(literals.map(literal =>
-    ts.createPropertyAssignment(JSON.stringify(literal), ts.createStringLiteral(literal))
+  return createObjectLiteral(literals.map(literal =>
+    createPropertyAssignment(JSON.stringify(literal), createStringLiteral(literal))
   ));
 }
 

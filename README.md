@@ -1,6 +1,6 @@
 # ts-transformer-enumerate
 
-[![Build Status][travis-image]][travis-url]
+![Build Status](https://github.com/kimamula/ts-transformer-enumerate/workflows/test/badge.svg)
 [![NPM version][npm-image]][npm-url]
 [![Downloads](https://img.shields.io/npm/dm/ts-transformer-enumerate.svg)](https://www.npmjs.com/package/ts-transformer-enumerate)
 

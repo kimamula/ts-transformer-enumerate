@@ -13,3 +13,4 @@ class MyClass {
         return {};
     }
 }
+export {};
